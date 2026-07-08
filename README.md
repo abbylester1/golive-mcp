@@ -4,8 +4,8 @@
 
 Works with Claude Code, Cursor, Gemini CLI, Copilot CLI, or any MCP-compatible client.
 
-[![npm](https://img.shields.io/npm/v/golive-mcp)](https://www.npmjs.com/package/golive-mcp)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![GitHub](https://img.shields.io/badge/github-abbylester1/golive--mcp-blue?logo=github)](https://github.com/abbylester1/golive-mcp)
 
 ## What is this?
 
@@ -16,11 +16,12 @@ No YAML pipelines. No CI/CD config. Just tell your AI "deploy this" and it happe
 ## Quick Start
 
 ```bash
-# Install globally
-npm install -g golive-mcp
+# Run directly — no install needed
+npx github:abbylester1/golive-mcp
 
-# Or run directly
-npx golive-mcp
+# Or install globally
+npm install -g github:abbylester1/golive-mcp
+golive-mcp
 ```
 
 Create a `deploy.config.json` in your project root, then tell your AI:
@@ -43,14 +44,12 @@ Create a `deploy.config.json` in your project root, then tell your AI:
 ## Installation
 
 ```bash
-npm install -g golive-mcp
+# Run without installing
+npx github:abbylester1/golive-mcp
+
+# Or install globally
+npm install -g github:abbylester1/golive-mcp
 golive-mcp
-```
-
-Or without installing:
-
-```bash
-npx golive-mcp
 ```
 
 ### MCP Client Setup
@@ -59,7 +58,7 @@ npx golive-mcp
 <summary><b>Claude Code</b></summary>
 
 ```bash
-claude mcp add golive-mcp -- npx golive-mcp
+claude mcp add golive-mcp -- npx github:abbylester1/golive-mcp
 ```
 </details>
 
@@ -72,7 +71,7 @@ Add to `.cursor/mcp.json`:
   "mcpServers": {
     "golive-mcp": {
       "command": "npx",
-      "args": ["golive-mcp"],
+      "args": ["github:abbylester1/golive-mcp"],
       "env": {}
     }
   }
@@ -90,7 +89,7 @@ Add to `.vscode/mcp.json`:
     "golive-mcp": {
       "type": "stdio",
       "command": "npx",
-      "args": ["golive-mcp"]
+      "args": ["github:abbylester1/golive-mcp"]
     }
   }
 }
@@ -101,7 +100,7 @@ Add to `.vscode/mcp.json`:
 <summary><b>OpenCode</b></summary>
 
 ```bash
-opencode mcp add golive-mcp -- npx golive-mcp
+opencode mcp add golive-mcp -- npx github:abbylester1/golive-mcp
 ```
 </details>
 
