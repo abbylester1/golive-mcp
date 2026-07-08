@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/abbylester1/deploy-mcp/main/schema.json",
+  "$schema": "https://raw.githubusercontent.com/abbylester1/golive-mcp/main/schema.json",
   "github": {
     "owner": "your-org",
     "repo": "your-repo"

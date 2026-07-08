@@ -1,11 +1,11 @@
 {
-  "name": "deploy-mcp-server",
+  "name": "golive-mcp",
   "version": "0.1.0",
-  "description": "MCP server for creating GitHub PRs and deploying to production",
+  "description": "Go Live — MCP server for AI agents to create GitHub PRs and deploy to production",
   "type": "module",
   "main": "dist/index.js",
   "bin": {
-    "deploy-mcp": "dist/index.js"
+    "golive-mcp": "dist/index.js"
   },
   "scripts": {
     "build": "tsc",
@@ -16,7 +16,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/abbylester1/deploy-mcp.git"
+    "url": "https://github.com/abbylester1/golive-mcp.git"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

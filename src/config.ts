@@ -6,7 +6,7 @@ import type { DeployConfig } from "./types.js"
 const CONFIG_CANDIDATES = [
   "deploy.config.json",
   "deploy.json",
-  join(homedir(), ".config", "deploy-mcp", "config.json"),
+  join(homedir(), ".config", "golive-mcp", "config.json"),
 ]
 
 function findConfig(): string | null {
@@ -21,7 +21,7 @@ export function loadConfig(path?: string): DeployConfig {
   if (!configPath) {
     throw new Error(
       "deploy.config.json not found. Create one or pass --config <path>.\n" +
-      "See https://github.com/abbylester1/deploy-mcp#configuration"
+      "See https://github.com/abbylester1/golive-mcp#configuration"
     )
   }
   const raw = readFileSync(configPath, "utf-8")
