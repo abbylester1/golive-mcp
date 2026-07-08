@@ -1,5 +1,5 @@
 {
-  "name": "deploy-mcp",
+  "name": "deploy-mcp-server",
   "version": "0.1.0",
   "description": "MCP server for creating GitHub PRs and deploying to production",
   "type": "module",

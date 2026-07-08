@@ -198,7 +198,7 @@ async function main() {
     params: {
       protocolVersion: "2024-11-05",
       capabilities: { tools: {} },
-      serverInfo: { name: "deploy-mcp", version: "0.1.0" },
+      serverInfo: { name: "deploy-mcp-server", version: "0.1.0" },
     },
   })
 
