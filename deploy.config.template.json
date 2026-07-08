@@ -1,0 +1,38 @@
+{
+  "$schema": "https://raw.githubusercontent.com/abbylester1/deploy-mcp/main/schema.json",
+  "github": {
+    "owner": "your-org",
+    "repo": "your-repo"
+  },
+  "targets": {
+    "production": {
+      "provider": "spaceship",
+      "build": {
+        "command": "npm run build",
+        "cwd": "frontend"
+      },
+      "spaceship": {
+        "host": "server43.shared.spaceship.host",
+        "user": "user@domain.com",
+        "password": "",
+        "remotePath": "/app",
+        "cageFsPath": "/home/heodwkopkf/domain.com/kyro/app",
+        "phpCopyUrl": "https://domain.com/kyro/deploy.php"
+      },
+      "healthCheckUrl": "https://domain.com/api/health"
+    },
+    "staging": {
+      "provider": "vercel",
+      "build": {
+        "command": "npm run build",
+        "cwd": "."
+      },
+      "vercel": {
+        "token": "",
+        "projectId": "",
+        "orgId": ""
+      },
+      "healthCheckUrl": "https://staging.vercel.app"
+    }
+  }
+}

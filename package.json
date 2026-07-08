@@ -1,0 +1,28 @@
+{
+  "name": "deploy-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for creating GitHub PRs and deploying to production",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "deploy-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc --watch"
+  },
+  "keywords": ["mcp", "deploy", "pr", "github", "spaceship", "cpanel"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abbylester1/deploy-mcp.git"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0"
+  },
+  "dependencies": {
+    "basic-ftp": "^5.0.5"
+  }
+}
