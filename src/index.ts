@@ -10,26 +10,11 @@ let config: DeployConfig
 // ── MCP Protocol (JSON-RPC over stdio) ──────────────────────────────
 
 function sendMsg(msg: object) {
-  const json = JSON.stringify(msg)
-  process.stdout.write(json.length + "\n" + json + "\n")
-}
-
-function readMsg(): Promise<any> {
-  return new Promise((resolve) => {
-    function onData(buf: Buffer) {
-      const data = buf.toString()
-      const match = data.match(/^(\d+)\n([\s\S]*)$/)
-      if (match) {
-        const len = parseInt(match[1], 10)
-        const content = match[2].trimEnd()
-        // Check if we got the full message
-        if (Buffer.byteLength(content, "utf-8") >= len) {
-          resolve(JSON.parse(content))
-        }
-      }
-    }
-    process.stdin.on("data", onData)
-  })
+  // MCP stdio transport: one JSON-RPC message per line, nothing else on
+  // stdout. Previously wrote a "<byte-length>\n" line before every
+  // message - non-standard framing a strict client can choke on. See
+  // issue #1.
+  process.stdout.write(JSON.stringify(msg) + "\n")
 }
 
 // ── Tool Handlers ───────────────────────────────────────────────────
@@ -104,23 +89,29 @@ const TOOLS = {
             if (!target.spaceship) {
               return { content: [{ type: "text", text: "spaceship config missing for this target" }], isError: true }
             }
-            logs = await deploySpaceship(target.build, target.spaceship, target.healthCheckUrl)
+            logs = await deploySpaceship(target.build, target.spaceship, target.healthCheckUrl, args.skipBuild)
             break
 
           case "vercel": {
             const cwd = target.build.cwd || process.cwd()
-            const cmds = target.build.command ? [target.build.command] : []
+            const cmds = args.skipBuild ? [] : (target.build.command ? [target.build.command] : [])
             if (target.vercel) {
               cmds.push(`npx vercel --token ${target.vercel.token} --prod`)
             }
+            // A failed command (bad build, vercel auth error, etc) must
+            // stop the remaining commands and mark the whole call as
+            // isError - previously it logged "Error: ..." and kept
+            // running the rest, so a broken deploy could still return a
+            // plain success response with the failure buried mid-log.
             for (const cmd of cmds) {
               logs.push(`Running: ${cmd}`)
+              const { execSync } = await import("child_process")
               try {
-                const { execSync } = await import("child_process")
                 const out = execSync(cmd, { cwd, encoding: "utf-8" })
                 logs.push(out.trim())
               } catch (e: any) {
                 logs.push(`Error: ${e.message}`)
+                return { content: [{ type: "text", text: logs.join("\n") }], isError: true }
               }
             }
             break
@@ -131,12 +122,13 @@ const TOOLS = {
               const cwd = target.build.cwd || process.cwd()
               for (const cmd of target.custom) {
                 logs.push(`Running: ${cmd}`)
+                const { execSync } = await import("child_process")
                 try {
-                  const { execSync } = await import("child_process")
                   const out = execSync(cmd, { cwd, encoding: "utf-8" })
                   logs.push(out.trim())
                 } catch (e: any) {
                   logs.push(`Error: ${e.message}`)
+                  return { content: [{ type: "text", text: logs.join("\n") }], isError: true }
                 }
               }
             }

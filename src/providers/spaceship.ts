@@ -23,15 +23,20 @@ function collectFiles(root: string, prefix: string): string[] {
 export async function deploySpaceship(
   build: BuildConfig,
   config: SpaceshipConfig,
-  healthCheckUrl?: string
+  healthCheckUrl?: string,
+  skipBuild?: boolean
 ): Promise<string[]> {
   const logs: string[] = []
 
   // 1. Build
   const cwd = build.cwd || process.cwd()
-  logs.push(`Building: ${build.command} in ${cwd}`)
-  execSync(build.command, { cwd, stdio: "pipe" })
-  logs.push("Build complete")
+  if (skipBuild) {
+    logs.push("Skipping build (skipBuild=true)")
+  } else {
+    logs.push(`Building: ${build.command} in ${cwd}`)
+    execSync(build.command, { cwd, stdio: "pipe" })
+    logs.push("Build complete")
+  }
 
   // 2. Determine standalone output
   const standaloneDir = join(cwd, ".next", "standalone")
