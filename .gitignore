@@ -6,3 +6,4 @@ node_modules/
 # it. Only deploy.config.template.json (no real secrets) is tracked.
 deploy.config.json
 deploy.json
+dist/
