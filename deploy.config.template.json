@@ -1,5 +1,4 @@
 {
-  "$schema": "https://raw.githubusercontent.com/abbylester1/golive-mcp/main/schema.json",
   "github": {
     "owner": "your-org",
     "repo": "your-repo"
@@ -12,14 +11,14 @@
         "cwd": "frontend"
       },
       "spaceship": {
-        "host": "server43.shared.spaceship.host",
-        "user": "user@domain.com",
+        "host": "your-server.shared.spaceship.host",
+        "user": "user@your-domain.com",
         "password": "",
         "remotePath": "/app",
-        "cageFsPath": "/home/heodwkopkf/domain.com/kyro/app",
-        "phpCopyUrl": "https://domain.com/kyro/deploy.php"
+        "cageFsPath": "/home/your-cpanel-user/your-domain.com/app",
+        "phpCopyUrl": "https://your-domain.com/deploy.php"
       },
-      "healthCheckUrl": "https://domain.com/api/health"
+      "healthCheckUrl": "https://your-domain.com/api/health"
     },
     "staging": {
       "provider": "vercel",

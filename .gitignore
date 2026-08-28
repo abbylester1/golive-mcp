@@ -1,3 +1,8 @@
 node_modules/
 .env
 *.log
+
+# Real config holds live host/FTP/Vercel/AWS credentials - never commit
+# it. Only deploy.config.template.json (no real secrets) is tracked.
+deploy.config.json
+deploy.json

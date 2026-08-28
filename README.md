@@ -235,6 +235,8 @@ Create `deploy.config.json` in your project root (or Go Live finds it here):
 3. `~/.config/golive-mcp/config.json`
 4. `--config=/path/to/config.json` flag
 
+> **⚠️ `deploy.config.json` holds real credentials** (FTP/cPanel passwords, Vercel/cloud tokens). It's already in `.gitignore` - never remove that entry or commit a filled-in config. For a shared machine or CI, prefer option 3 (`~/.config/golive-mcp/config.json`) so secrets never live inside a repo at all.
+
 ## How it's different
 
 | vs | They do | Go Live does |

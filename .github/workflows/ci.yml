@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Smoke test - dist entrypoint is valid, runnable JS
+        run: node --check dist/index.js
+      # A real protocol-level smoke test (start the server, send an
+      # actual MCP initialize + tools/list over stdio, assert on the
+      # response) is tracked as follow-up - it needs the MCP SDK's own
+      # client to get the Content-Length wire framing right, a naive
+      # newline-delimited JSON probe produces garbage that can silently
+      # pass for the wrong reason, which is worse than no check.
