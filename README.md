@@ -11,6 +11,8 @@ Works with Claude Code, Cursor, Gemini CLI, Copilot CLI, or any MCP-compatible c
 [![Forks](https://img.shields.io/github/forks/abbylester1/golive-mcp?style=for-the-badge&color=blue)](https://github.com/abbylester1/golive-mcp/fork)
 [![Issues](https://img.shields.io/github/issues/abbylester1/golive-mcp?style=for-the-badge&color=orange)](https://github.com/abbylester1/golive-mcp/issues)
 
+![Demo: telling an AI agent to deploy, and golive-mcp doing it](./assets/demo.gif)
+
 </div>
 
 ## What is this?

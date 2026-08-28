@@ -1,0 +1,15 @@
+{
+  "github": { "owner": "abbylester1", "repo": "golive-mcp" },
+  "targets": {
+    "production": {
+      "provider": "custom",
+      "build": { "command": "echo Building demo site...", "cwd": "." },
+      "custom": [
+        "echo Uploading build to production...",
+        "echo Restarting app server...",
+        "echo Deploy complete"
+      ],
+      "healthCheckUrl": "https://raw.githubusercontent.com/abbylester1/golive-mcp/main/package.json"
+    }
+  }
+}
