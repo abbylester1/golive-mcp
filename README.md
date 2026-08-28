@@ -1,17 +1,27 @@
+<div align="center">
+
 # golive-mcp
 
 **Go Live — deploy from your AI agent in one command.**
 
 Works with Claude Code, Cursor, Gemini CLI, Copilot CLI, or any MCP-compatible client.
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
-[![GitHub](https://img.shields.io/badge/github-abbylester1/golive--mcp-blue?logo=github)](https://github.com/abbylester1/golive-mcp)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/abbylester1/golive-mcp?style=for-the-badge&color=FFD700)](https://github.com/abbylester1/golive-mcp/stargazers)
+[![Forks](https://img.shields.io/github/forks/abbylester1/golive-mcp?style=for-the-badge&color=blue)](https://github.com/abbylester1/golive-mcp/fork)
+[![Issues](https://img.shields.io/github/issues/abbylester1/golive-mcp?style=for-the-badge&color=orange)](https://github.com/abbylester1/golive-mcp/issues)
+
+</div>
 
 ## What is this?
 
 Go Live is an MCP server that gives your AI agent superpowers: **create a GitHub PR, deploy to production, and verify it's live** — all from a single natural language request.
 
 No YAML pipelines. No CI/CD config. Just tell your AI "deploy this" and it happens.
+
+## Why
+
+Production deploys are the most error-prone part of AI-assisted coding. Write code, commit, push, create a PR, build, upload, copy files, restart, check if it's live — that's 9+ manual steps, and most AI coding agents stop at "here's your code," leaving deploy as homework. Go Live turns the whole sequence into one sentence: **"deploy to production."**
 
 ## Quick Start
 
@@ -234,10 +244,6 @@ Create `deploy.config.json` in your project root (or Go Live finds it here):
 | **DeployPilot** | Heavy gateway (91 tools, Docker) | Lightweight MCP server, single binary |
 | **EZKeel / Runway** | CLI tools, need a VPS | Works from any AI via MCP |
 | **CI/CD pipelines** | Need YAML config | One JSON config, AI manages the rest |
-
-## Why
-
-Production deploys are the most error-prone part of AI-assisted coding. You write code, commit, push, create a PR, build, upload, copy files, restart, check if it's live — that's 9+ manual steps. Go Live turns it into one sentence: "deploy to production."
 
 ## License
 
